@@ -2,7 +2,7 @@
 
 exports.run = (client, message) => {
     if (message.author.bot) return;
-    if (message.channel.type === 'dm') {
+    if (message.channel.type === "dm") {
         client.logger.log(`${message.author.tag} sent ${message.content}`, "dm");
         return;
     }
@@ -13,15 +13,15 @@ exports.run = (client, message) => {
     client.logger.log(`${message.author.username} ran command "${command}" with args: ${args}`, "cmd");
 
     try {
-        let genFile = require(`../commands/${command}.js`);
+        const genFile = require(`../commands/${command}.js`);
         genFile.run(client, message, args);
     } catch (err) {
         try {
-            let utlFile = require(`../commands/general/${command}.js`);
+            const utlFile = require(`../commands/general/${command}.js`);
             utlFile.run(client, message, args);
         } catch (err) {
             try {
-                let utlFile = require(`../commands/utilities/${command}.js`);
+                const utlFile = require(`../commands/utilities/${command}.js`);
                 utlFile.run(client, message, args);
             } catch (err) {
                 client.logger.error(err);
