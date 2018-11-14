@@ -1,0 +1,13 @@
+{
+  "name": "google-bot",
+  "version": "0.0.0",
+  "description": "GoogleBot",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "google": "^2.1.0"
+  }
+}
