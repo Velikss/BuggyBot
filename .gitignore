@@ -5,6 +5,7 @@
 node_modules
 config.json
 BuggyBot.njsproj
+logo.jpg
 *.sln
 
 # User-specific files
