@@ -12,6 +12,7 @@ exports.run = (client, message) => {
 
     if (config.trustedUsers.indexOf(message.author.id) === -1) {
         client.logger.warn("Someone untrusted tried evaluating code.");
+        message.channel.send(":warning: Sadly I do not recognize you as a trustable user.");
         return;
     }
     try {
