@@ -1,6 +1,4 @@
-﻿const config = require("../config.json");
-
-exports.run = (client, message) => {
+﻿exports.run = (client, message, args) => {
     const clean = text => {
         if (typeof (text) === "string")
             return text.replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`);
@@ -8,9 +6,7 @@ exports.run = (client, message) => {
             return text;
     };
 
-    const args = message.content.split(" ").slice(1);
-
-    if (config.trustedUsers.indexOf(message.author.id) === -1) {
+    if (client.config.trustedUsers.indexOf(message.author.id) === -1) {
         client.logger.warn("Someone untrusted tried evaluating code.");
         message.channel.send(":warning: Sadly I do not recognize you as a trustable user.");
         return;
@@ -26,4 +22,15 @@ exports.run = (client, message) => {
     } catch (err) {
         message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
     }
+};
+
+exports.conf = {
+  aliases: ["run"]
+};
+
+exports.help = {
+  name: "eval",
+  category: "System",
+  description: "Evaluates JavaScript code, only available for trusted users",
+  usage: "eval [code]"
 };

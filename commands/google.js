@@ -1,5 +1,6 @@
 ﻿const google = require("google");
 const Discord = require(`discord.js`);
+
 exports.run = (client, message) => {
     const args = message.content.split(/[ ]+/);
     const suffix = args.slice(1).join(" ");
@@ -48,4 +49,15 @@ exports.run = (client, message) => {
                 return message.react("👌");
             }
         });
+};
+
+exports.conf = {
+  aliases: ["g", "search"]
+};
+
+exports.help = {
+  name: "google",
+  category: "General",
+  description: "Runs a google query and returns the best result",
+  usage: "google [query]"
 };
