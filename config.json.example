@@ -1,5 +1,9 @@
 {
   "prefix" : "?",
   "token": "TOKEN_HERE",
-  "trustedUsers": ["YOUR ID", "OPTIONAL_OTHER_USER_ID"] 
+  "trustedUsers": ["YOUR ID", "OPTIONAL_OTHER_USER_ID"],
+  "sqlhost": "YOUR_HOST_HERE",
+  "sqluser": "YOUR_USER_HERE",
+  "sqlpassword": "YOUR_PASSWORD_HERE",
+  "sqldatabase": "YOUR_DATABASE_HERE"
 }

@@ -10,6 +10,7 @@
     "chalk": "^2.4.1",
     "date-and-time": "^0.6.3",
     "discord.js": "^11.4.2",
-    "google": "^2.1.0"
+    "google": "^2.1.0",
+    "mysql": "^2.16.0"
   }
 }
