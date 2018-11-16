@@ -40,7 +40,16 @@ client.commands = new Enmap();
       });
     });
 
-client.login(client.config.token);
+    con.connect(err => {
+      if(err) {
+        client.logger.error("Could not connect to database!");
+        throw err;
+      }
+      client.logger.log("Connected to database!" ,"ready");
+      client.login(client.config.token);
+    });
+
+
 
 client.on("disconnect", () => client.logger.warn("Bot is disconnecting..."))
     .on("reconnect", () => client.logger.log("Bot reconnecting...", "log"))
