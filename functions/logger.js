@@ -9,7 +9,7 @@ class Logger {
         switch (type) {
         case "log":
         {
-            return console.log(`${timestamp} ${chalk.bgYellow(type.toUpperCase())} ${log} `);
+            return console.log(`${timestamp} ${chalk.green(type.toUpperCase())} ${log} `);
         }
         case "error":
         {
@@ -29,7 +29,11 @@ class Logger {
         }
         case "dm":
         {
-            return console.log(`${timestamp} ${chalk.bgBlueBright(type.toUpperCase())} ${log} `);
+            return console.log(`${timestamp} ${chalk.blue(type.toUpperCase())} ${log} `);
+        }
+        case "event":
+        {
+            return console.log(`${timestamp} ${chalk.yellow(type.toUpperCase())} ${log} `);
         }
         }
     }
