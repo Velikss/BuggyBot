@@ -25,7 +25,7 @@ class Logger {
         }
         case "cmd":
         {
-            return console.log(`${timestamp} ${chalk.bgCyan(type.toUpperCase())} ${log} `);
+            return console.log(`${timestamp} ${chalk.cyan(type.toUpperCase())} ${log} `);
         }
         case "dm":
         {
