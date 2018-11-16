@@ -13,6 +13,7 @@ var con = mysql.createConnection({
   password: client.config.sqlpassword,
   database: client.config.sqldatabase
 });
+client.con = con;
 
 fs.readdir(`./events/`,
     (err, files) => {
@@ -40,7 +41,7 @@ client.commands = new Enmap();
       });
     });
 
-    con.connect(err => {
+    client.con.connect(err => {
       if(err) {
         client.logger.error("Could not connect to database!");
         throw err;
