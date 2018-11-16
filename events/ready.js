@@ -1,6 +1,6 @@
 ﻿const Discord = require(`discord.js`);
 
-exports.run = (client, con) => {
+exports.run = (client) => {
 
     client.user.setActivity(`you`, { type: "WATCHING" });
 
