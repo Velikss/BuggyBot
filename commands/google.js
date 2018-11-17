@@ -46,7 +46,6 @@ exports.run = (client, message) => {
                         embed: embed
                     });
                 }
-                return message.react("👌");
             }
         });
 };
