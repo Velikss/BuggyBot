@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
     port_query: '27015'
   }).then((state) => {
     const embed = new Discord.RichEmbed()
-        .setColor(`#ffffff`)
+        .setColor(`#0x80fa05`)
         .setAuthor(`Extinction`,
             `https://d1u5p3l4wpay3k.cloudfront.net/arksurvivalevolved_gamepedia/thumb/7/7b/ARK-_Extinction.png/600px-ARK-_Extinction.png?version=e6aec5bebd14589ea4fc846852b48260`)
         .setDescription(`**Name:** ${state.name} \n **Online:** ${state.raw.numplayers}/${state.maxplayers} players`)
@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
     // console.log(state);
   }).catch((error) => {
     const embed = new Discord.RichEmbed()
-        .setColor(`#ffffff`)
+        .setColor(`#0xf52d0a`)
         .setAuthor(`Extinction`,
             `https://d1u5p3l4wpay3k.cloudfront.net/arksurvivalevolved_gamepedia/thumb/7/7b/ARK-_Extinction.png/600px-ARK-_Extinction.png?version=e6aec5bebd14589ea4fc846852b48260`)
         .setDescription(`Offline`)
@@ -43,7 +43,7 @@ exports.run = (client, message, args) => {
     port_query: '27017'
   }).then((state) => {
       const embed = new Discord.RichEmbed()
-          .setColor(`#ffffff`)
+          .setColor(`#0x80fa05`)
           .setAuthor(`Ragnarok`,
               `https://d1u5p3l4wpay3k.cloudfront.net/arksurvivalevolved_gamepedia/3/3e/ARK-_Ragnarok.png?version=e9325ba796cd97d3c5fec9cf6274b8ad`)
           .setDescription(`**Name:** ${state.name} \n **Online:** ${state.raw.numplayers}/${state.maxplayers} players`)
@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
     // console.log(state);
   }).catch((error) => {
     const embed = new Discord.RichEmbed()
-        .setColor(`#ffffff`)
+        .setColor(`#0xf52d0a`)
         .setAuthor(`Ragnarok`,
             `https://d1u5p3l4wpay3k.cloudfront.net/arksurvivalevolved_gamepedia/3/3e/ARK-_Ragnarok.png?version=e9325ba796cd97d3c5fec9cf6274b8ad`)
         .setDescription(`Offline`)
