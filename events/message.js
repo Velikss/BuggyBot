@@ -18,7 +18,7 @@
         var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 
         message.reply(randomAnswer);
-        message.delete;
+        message.delete();
 
 	client.logger.log(`9gag & Jan detected! Responding with: ${randomAnswer}`);
     }
