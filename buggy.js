@@ -1,19 +1,10 @@
 const Discord = require(`discord.js`);
 const Enmap = require("enmap");
 const fs = require("fs");
-const mysql = require("mysql");
 
 const client = new Discord.Client();
 client.config = require("./config.json");
 client.logger = require("./functions/logger");
-
-var con = mysql.createConnection({
-  host: client.config.sqlhost,
-  user: client.config.sqluser,
-  password: client.config.sqlpassword,
-  database: client.config.sqldatabase
-});
-client.con = con;
 
 fs.readdir(`./events/`,
     (err, files) => {
@@ -22,7 +13,7 @@ fs.readdir(`./events/`,
         files.forEach(file => {
             const event = require(`./events/${file}`);
             const eventName = file.split(".")[0];
-            client.on(eventName, (...args) => event.run(client, ...args, con));
+            client.on(eventName, (...args) => event.run(client, ...args));
         });
     });
 
@@ -41,16 +32,7 @@ client.commands = new Enmap();
       });
     });
 
-    client.con.connect(err => {
-      if(err) {
-        client.logger.error("Could not connect to database!");
-        throw err;
-      }
-      client.logger.log("Connected to database!" ,"ready");
-      client.login(client.config.token);
-    });
-
-
+client.login(client.config.token);
 
 client.on("disconnect", () => client.logger.warn("Bot is disconnecting..."))
     .on("reconnect", () => client.logger.log("Bot reconnecting...", "log"))
