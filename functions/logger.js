@@ -35,6 +35,10 @@ class Logger {
         {
             return console.log(`${timestamp} ${chalk.yellow(type.toUpperCase())} ${log} `);
         }
+        case "greet":
+        {
+            return console.log(`${timestamp} ${chalk.blue(type.toUpperCase())} ${log} `);
+        }
         }
     }
 
