@@ -1,10 +1,13 @@
 const Discord = require(`discord.js`);
 const Enmap = require("enmap");
 const fs = require("fs");
+const ytdl = require('ytdl-core');
+
 
 const client = new Discord.Client();
 client.config = require("./config.json");
 client.logger = require("./functions/logger");
+client.ytdl = ytdl;
 
 fs.readdir(`./events/`,
     (err, files) => {
