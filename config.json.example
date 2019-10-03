@@ -1,5 +1,8 @@
 {
   "prefix" : "?",
   "token": "YOUR TOKEN HERE",
-  "trustedUsers": ["YOUR ID", "OPTIONAL_OTHER_USER_ID"]
+  "trustedUsers": ["YOUR ID", "OPTIONAL_OTHER_USER_ID"],
+  "userGreetings": {
+    "ID": "url"
+  }
 }

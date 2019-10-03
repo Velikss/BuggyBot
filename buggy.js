@@ -8,6 +8,7 @@ const client = new Discord.Client();
 client.config = require("./config.json");
 client.logger = require("./functions/logger");
 client.ytdl = ytdl;
+client.fs = fs;
 
 fs.readdir(`./events/`,
     (err, files) => {

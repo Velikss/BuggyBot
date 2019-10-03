@@ -14,21 +14,27 @@ exports.run = (client, oldMember, newMember) => {
 
   //If member joined channel
   } else {
-    const streamOptions = { seek: 0, volume: 1 };
+  const streamOptions = { seek: 0, volume: 1 };
+  var voiceChannel = newMember.voiceChannel;
 
-    var voiceChannel = newMember.voiceChannel;
-    voiceChannel.join().then(connection => {
-      console.log("joined channel");
-      const stream = client.ytdl('https://www.youtube.com/watch?v=2ZIpFytCSVc', { filter : 'audioonly' });
-      const dispatcher = connection.playStream(stream, streamOptions);
-      dispatcher.on("end", end => {
-        console.log("left channel");
-        voiceChannel.leave();
-        });
-      }).catch(err => console.log(err));
+    //Check if user is in pre-defined list
+    if(client.config.userGreetings.hasOwnProperty(newMember.user.id))
+    {
+      client.logger.log('Known user detected! Joining...');
+      id = newMember.user.id;
+      url = client.config.userGreetings[id];
 
-      // newMember.voiceChannel.join()
-      // .then(connection => client.logger.log('Connected to voice channel!'))
-      // .catch(console.error);
+      voiceChannel.join().then(connection => {
+        client.logger.log("Joined channel to say something.");
+        const stream = client.ytdl(url, { filter : 'audioonly' });
+        const dispatcher = connection.playStream(stream, streamOptions);
+        dispatcher.on("end", end => {
+          client.logger.log("End of transaction.");
+          voiceChannel.leave();
+          });
+        }).catch(err => console.log(err));
+    } else {
+      return
+    }
   }
-};
+}
