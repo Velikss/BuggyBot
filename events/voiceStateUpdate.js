@@ -4,7 +4,7 @@ exports.run = (client, oldMember, newMember) => {
     return;
 
   //If member left channel
-  if (newMember.voiceChannel == null) {
+  if (newMember.voiceChannel === undefined) {
     client.logger.log("User left voice channel.");
     if (oldMember.voiceChannel.members.size == 1)
     {
@@ -12,8 +12,11 @@ exports.run = (client, oldMember, newMember) => {
       oldMember.voiceChannel.leave();
     }
 
+
+  }
+
   //If member joined channel
-  } else {
+  if (oldMember.voicechannel === undefined && newMember.voiceChannel !== undefined) {
   const streamOptions = { seek: 0, volume: 1 };
   var voiceChannel = newMember.voiceChannel;
 
