@@ -3,6 +3,12 @@ exports.run = (client, oldMember, newMember) => {
   if (newMember.user.bot)
     return;
 
+  //Dont trigger on muting or deafening
+  if((oldMember.muted && !newMember.muted) || (!oldMember.muted && newMember.muted))
+  return;
+  if((oldMember.deaf && !newMember.deaf) || (!oldMember.deaf && newMember.deaf))
+  return;
+
   //If member left channel
   if (newMember.voiceChannel === undefined) {
     client.logger.log("User left voice channel.");
@@ -11,8 +17,6 @@ exports.run = (client, oldMember, newMember) => {
       client.logger.log("Oops! I'm in an empty channel. Disconnecting...")
       oldMember.voiceChannel.leave();
     }
-
-
   }
 
   //If member joined channel
