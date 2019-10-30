@@ -1,26 +1,33 @@
 ﻿exports.run = (client, message) => {
     if (message.author.bot) return;
 
-    if (message.author.id == "277809305397493761" && message.content.includes("9gag")) {
-        var answers = [
-                "Looks like you should fock off with your stupid memes",
-                "Go post your shitty memes somewhere else!",
-                "Looks like we have already seen this message",
-                "We don't want memes with just 5 upvotes (including yo moms google account) in this channel",
-                "JAN! you damn moron, stop this nonsense",
-                "9GAG? you mean 9Ijustwannadie",
-                "9GAG? That shit is older than yo mom and twice as death",
-                "Go search for a life at www.zoekeenleven.be",
-                "He Zwartjoekel, ga weg",
-                "Verredorie Jan, alweer?!"
-        ]
+    if (message.author.id == "277809305397493761" || message.author.id == "223481568918896640") {
+      var forbiddenWords = ["9gag", "anime", "swordartonline", "facebook", "instagram"];
 
-        var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
+      for (var i = 0; i < forbiddenWords.length; i++) {
+        if (message.content.includes(forbiddenWords[i])) {
+          // message.content contains a forbidden word;
+          // delete message, log, etc.
+          var answers = [
+                  "Looks like you should fock off with your stupid content",
+                  "Go post your shitty memes somewhere else!",
+                  "Looks like we have already seen this message",
+                  "You damn moron, stop this nonsense",
+                  "Go search for a life at www.zoekeenleven.be",
+                  "He Zwartjoekel, ga weg",
+                  "Verredorie, alweer?!"
+          ]
 
-        message.reply(randomAnswer);
-        message.delete();
+          var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 
-	client.logger.log(`9gag & Jan detected! Responding with: ${randomAnswer}`);
+          message.reply(randomAnswer);
+          message.delete();
+          break;
+          }
+      }
+
+
+	     client.logger.log(`Bram of Jan detected! Responding with: ${randomAnswer}`);
     }
 
     if (message.content.indexOf(client.config.prefix) !== 0) return;
