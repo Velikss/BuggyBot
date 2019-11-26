@@ -30,8 +30,19 @@
 	     client.logger.log(`Bram of Jan detected! Responding with: ${randomAnswer}`);
     }
 
+    //Check if user is offline
+    if (message.author.presence.status == "offline") {
+      //User is not online, removing message
+      message.delete();
+
+      //DM user
+      message.author.sendMessage(`Sorry, the message you sent in ${message.channel} could not be delivered because your status is set to offline! \n**Message**: ${message.content}`);
+    }
+
+    //Check for configured prefix
     if (message.content.indexOf(client.config.prefix) !== 0) return;
 
+    //Check if DM
     if (message.channel.type === "dm") {
         client.logger.log(`${message.author.tag} sent ${message.content}`, "dm");
     }
